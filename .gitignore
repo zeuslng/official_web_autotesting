@@ -1,0 +1,8 @@
+# ide环境
+.idea
+.vs
+.vscode
+.pytest_cache
+.temp
+allure-results
+allure-report

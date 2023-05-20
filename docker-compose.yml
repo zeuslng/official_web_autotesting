@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  official_web_autotesting:
+    build:
+      context: .
+      args:
+        TEST_URL: ${TEST_URL}
+    image: ${TEST_IMAGE} # 用于CI阶段设置tag
+    environment:
+        TZ: "Asia/Shanghai"
+    network_mode: "bridge"
+    ports:
+      - "30000:30000"
+    restart: unless-stopped
+  version_tag:
+    extends: official_web_autotesting
+    image: ${REPO_IMAGE} # 用于CI阶段设置tag

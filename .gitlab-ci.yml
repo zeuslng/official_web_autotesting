@@ -1,0 +1,86 @@
+image: docker:stable
+
+# 指定用于Rancher部署的gitlab runner标签，这与最终部署的集群没有关联
+.runner:  
+  # 定义runner级别的缓存，加速编译速度，同时也可用于任务之间数据传递
+  cache:
+    paths:
+      - /root/.cache/pip/wheels
+
+# 引用Rancher部署脚本（所需tag：docker）
+include:
+  - template: Rancher.Base.gitlab-ci.yml
+# 将自动部署到Rancher中的特定k8s集群（基于CI Variables中配置的Rancher用户信息）
+# k8s配置位于deployment.yml或者service.yml
+# deployment.yml是容器基础部署配置，可用于本地开发
+# service.yml是服务及LB配置，将更优先匹配，并拼接deployment.yml的内容作为最终配置项
+# 在Rancher中最终表现形式如下：
+# 项目名称为：gitlab仓库所在组，子组用'/'连接，如it/integration
+# 命名空间为：gitlab项目名称
+  - template: Testing.Base.gitlab-ci.yml
+# 自动化测试相关模板
+
+# 定义所需变量
+variables:
+  TEST: "test_var"
+
+# 定义CI阶段
+stages:
+  - package
+  - build # 已在外部模板定义
+  - release # 已在外部模板定义
+  - deploy # 已在外部模板定义
+  - test # 已在外部模板定义
+  - test-report # 已在外部模板定义
+
+# 编译&打包任务（固定任务名，docker-build任务将以此作为依赖，以传递artifacts）
+docker-dependencies:
+  extends: .runner
+  image: python:3.8.6
+  # 定义runner级别的缓存，加速编译速度，同时也可用于任务之间数据传递
+  cache:
+    paths:
+      - /root/.cache/pip/wheels
+  stage: package
+  only:
+    - develop
+    - master
+  script:
+    # - ls -la ~/.ssh/
+    # - cat ~/.ssh/known_hosts
+    - echo dependencies for image $TEST_IMAGE
+    - echo $CI_PROJECT_DIR
+    - cd $CI_PROJECT_DIR
+# 传递artifacts内容
+#  artifacts:
+#    paths:
+#      - target/*.jar
+#    # 放在这里作为演示，实际上在这个例子里，因为不需要编译，所以没有产生相应的artifacts
+
+# docker compose image 编译任务
+compose-build:
+  extends:
+    - .compose-build
+    # 用于覆盖默认runner， 传递cache，演示用途，非必须
+    - .runner
+  only:
+    - develop
+    - master
+
+# 使用Harbor api进行tag，速度较快，但设置需要HARBOR_TOKEN环境变量
+harbor-release:
+  extends: .harbor-release
+
+# 执行UI自动化测试
+ui-test-docker:
+  extends: .ui-test-docker
+  only:
+    - develop
+    - master
+
+# 从allure-results生成报告
+allure-results-to-report:
+  extends: .allure-results-to-report
+  only:
+    - develop
+    - master
