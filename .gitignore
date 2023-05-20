@@ -4,5 +4,4 @@
 .vscode
 .pytest_cache
 temp
-allure-results
 allure-report
