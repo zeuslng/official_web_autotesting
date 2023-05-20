@@ -3,6 +3,6 @@
 .vs
 .vscode
 .pytest_cache
-.temp
+temp
 allure-results
 allure-report
