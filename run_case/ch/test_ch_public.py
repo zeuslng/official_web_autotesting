@@ -6,15 +6,12 @@ import pytest
 
 import utils.TestTool as tool
 import pageModule.ch.ch_public as public
-from test_generate_report import env
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    home_url = 'https://ot-www.sucheon.com/index.html'
-else:
-    home_url = 'https://www.sucheon.com/index.html'
+
+home_url = 'https://www.sucheon.com/index.html'
 
 
 class TestPublic(object):

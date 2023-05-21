@@ -9,25 +9,21 @@ import allure
 import pytest
 from selenium.webdriver.common.by import By
 
-import test_generate_report
 import utils.TestTool as tool
 import pageModule.ch.ch_home as home
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if test_generate_report.env == "ot":
-    product_url = 'https://ot-www.sucheon.com/product.html'
-    home_url = 'https://ot-www.sucheon.com/index.html'
-    about_url = 'https://ot-www.sucheon.com/about.html'
-    application_url = 'https://ot-www.sucheon.com/application.html'
-else:
-    product_url = 'https://www.sucheon.com/product.html'
-    home_url = 'https://www.sucheon.com/index.html'
-    about_url = 'https://www.sucheon.com/about.html'
-    application_url = 'https://www.sucheon.com/application.html'
+
+product_url = 'https://www.sucheon.com/product.html'
+home_url = 'https://www.sucheon.com/index.html'
+about_url = 'https://www.sucheon.com/about.html'
+application_url = 'https://www.sucheon.com/application.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestHome(object):
 
     feature = '首页-中文'

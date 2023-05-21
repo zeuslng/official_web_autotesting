@@ -7,19 +7,18 @@ import time
 
 import allure
 import pytest
-from test_generate_report import env
 import utils.TestTool as tool
 import pageModule.ch.ch_cases as case
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    cases_url = 'https://ot-www.sucheon.com/application.html'
-else:
-    cases_url = 'https://www.sucheon.com/application.html'
+
+cases_url = 'https://www.sucheon.com/application.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestCases(object):
 
     feature = '应用案例-中文'

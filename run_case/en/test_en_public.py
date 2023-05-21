@@ -7,17 +7,14 @@ import time
 
 import allure
 import pytest
-from test_generate_report import env
 import utils.TestTool as tool
 import pageModule.en.en_public as public
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    home_url = 'https://ot-www.sucheon.com/en/index.html'
-else:
-    home_url = 'https://www.sucheon.com/en/index.html'
+
+home_url = 'https://www.sucheon.com/en/index.html'
 
 
 class TestPublic(object):

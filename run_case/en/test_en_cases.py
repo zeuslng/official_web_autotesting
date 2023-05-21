@@ -1,21 +1,14 @@
 import sys
 import os
-import time
-
 import allure
 import pytest
-from test_generate_report import env
-
 import utils.TestTool as tool
 import pageModule.en.en_cases as case
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    cases_url = 'https://ot-www.sucheon.com/en/application.html'
-else:
-    cases_url = 'https://www.sucheon.com/en/application.html'
+cases_url = 'https://www.sucheon.com/en/application.html'
 
 
 class TestCases(object):

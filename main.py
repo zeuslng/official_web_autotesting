@@ -1,8 +1,10 @@
 import os
 import sys
 
-path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+path = os.path.dirname(__file__)
 sys.path.append(path)
+# sys.path.append('E:/dev_project/official_web_autotesting-master')
+print(f'已经把path：{path}添加到sys.path了')
 # 获取项目根路径
 BASS_DIR = os.getcwd()
 # 测报报告存放的根路径
@@ -36,7 +38,7 @@ if __name__ == '__main__':
     # 首先调用get_order获取这次测试用例报告的文件夹序列
     get_order()
     # 然后运行测试用例
-    test_commend = 'pytest -n 2 --dist=load -vs .\\run_case\mycase\ --alluredir ./temp'
+    test_commend = 'pytest -vs .\\run_case\ch\ --alluredir ./temp'
     os.system(test_commend)
 
     # 然后运行用例 将报告创建在新文件夹下

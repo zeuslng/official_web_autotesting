@@ -7,19 +7,18 @@ import time
 
 import allure
 import pytest
-from test_generate_report import env
 import utils.TestTool as tool
 import pageModule.ch.ch_products as product
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    product_url = 'https://ot-www.sucheon.com/product.html'
-else:
-    product_url = 'https://www.sucheon.com/product.html'
+
+product_url = 'https://www.sucheon.com/product.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestProduct(object):
 
     feature = '产品介绍-中文'

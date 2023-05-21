@@ -7,17 +7,13 @@ import time
 
 import allure
 import pytest
-from test_generate_report import env
 import utils.TestTool as tool
 import pageModule.en.en_products as product
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    product_url = 'https://ot-www.sucheon.com/en/product.html'
-else:
-    product_url = 'https://www.sucheon.com/en/product.html'
+product_url = 'https://www.sucheon.com/en/product.html'
 
 
 class TestProduct(object):

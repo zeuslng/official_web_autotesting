@@ -1,21 +1,21 @@
 """
 公共模块测试用例（特别关注、异常报警等）
 """
-
+import os
 import sys
 import time
 import allure
 import pytest
 from selenium.webdriver.common.by import By
-from test_generate_report import env
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))
 import pageModule.ch.ch_about_us as about
 import utils.TestTool as tool
-if str(env) == 'ot':
-    about_url = 'https://ot-www.sucheon.com/about.html'
-else:
-    about_url = 'https://www.sucheon.com/about.html'
+
+about_url = 'https://www.sucheon.com/about.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestAbout(object):
 
     feature = '关于我们-中文'

@@ -6,17 +6,14 @@ import time
 import allure
 import pytest
 from selenium.webdriver.common.by import By
-from test_generate_report import env
 import utils.TestTool as tool
 import pageModule.en.en_news as news
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
 
-if env == 'ot':
-    news_url = 'https://ot-www.sucheon.com/en/news.html'
-else:
-    news_url = 'https://www.sucheon.com/en/news.html'
+
+news_url = 'https://www.sucheon.com/en/news.html'
 
 
 class TestNews(object):
