@@ -12,8 +12,6 @@ import pageModule.ch.ch_products as product
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
-
 product_url = 'https://www.sucheon.com/product.html'
 myskip = pytest.mark.skip
 

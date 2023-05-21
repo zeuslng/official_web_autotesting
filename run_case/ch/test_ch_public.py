@@ -37,6 +37,7 @@ class TestPublic(object):
     def test_bottom_1(self):
         time.sleep(5)
         # 悬浮按钮
+        tool.get_allure_screen_shoot(self.driver, '验证截图')
         side_btn = self.public.get_side_btn()
         serve_phone = self.public.get_serve_phone()
         to_top_btn = self.public.get_to_top_btn()
@@ -84,6 +85,7 @@ class TestPublic(object):
             tool.move_to_element_or_click(self.driver, side_btn)
             serve_img = tool.wait_element_clickable(self.driver, *self.public.serve_img)
             visible = tool.wait_until_true(tool.is_element_visible, 10, serve_img)
+            tool.get_allure_screen_shoot(self.driver, '验证截图2')
             if not visible or not tool.wait_until_true(tool.is_img_loaded, 10, self.driver, serve_img):
                 tool.raise_and_screen(self.driver, '客服二维码疑似显示异常')
             if serve_phone.text != '0592-5222938' or not serve_phone.is_displayed:
@@ -95,6 +97,7 @@ class TestPublic(object):
             big_img = self.public.get_big_serve_img()
             close_btn = self.public.get_close_btn()
             visible_img = tool.wait_until_true(tool.is_element_visible, 10, big_img)
+            tool.get_allure_screen_shoot(self.driver, '验证截图3')
             if not visible_img or not tool.wait_until_true(tool.is_img_loaded, 5, self.driver, big_img):
                 tool.raise_and_screen(self.driver, '疑似点击二维码后没有放大')
             # 点击关闭按钮

@@ -12,7 +12,6 @@ import pageModule.ch.ch_news as news
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
 news_url = 'https://www.sucheon.com/news.html'
 myskip = pytest.mark.skip
 

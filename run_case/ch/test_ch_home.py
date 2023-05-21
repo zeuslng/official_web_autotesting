@@ -14,8 +14,6 @@ import pageModule.ch.ch_home as home
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
-
 product_url = 'https://www.sucheon.com/product.html'
 home_url = 'https://www.sucheon.com/index.html'
 about_url = 'https://www.sucheon.com/about.html'

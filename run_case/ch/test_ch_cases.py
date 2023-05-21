@@ -12,8 +12,6 @@ import pageModule.ch.ch_cases as case
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
-
 cases_url = 'https://www.sucheon.com/application.html'
 myskip = pytest.mark.skip
 
