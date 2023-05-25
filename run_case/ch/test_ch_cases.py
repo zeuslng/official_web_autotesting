@@ -16,7 +16,7 @@ cases_url = 'https://www.sucheon.com/application.html'
 myskip = pytest.mark.skip
 
 
-@myskip
+# @myskip
 class TestCases(object):
 
     feature = '应用案例-中文'

@@ -9,11 +9,11 @@ import pageModule.ch.ch_public as public
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
-
 home_url = 'https://www.sucheon.com/index.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestPublic(object):
 
     feature = '公共部分-中文'

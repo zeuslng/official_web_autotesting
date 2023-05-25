@@ -31,12 +31,12 @@ def get_driver():
 
     if platform.system().lower() == 'windows':
         print("======windows======")
-        driver = webdriver.Chrome()
         cap = {
             "browserName": "chrome",
         }
         # driver = webdriver.Remote('http://127.0.0.1:4444/wd/hub', cap)
-        # driver = webdriver.Remote('http://192.168.1.4:4444/wd/hub', cap)
+        driver = webdriver.Remote('http://192.168.1.4:4444/wd/hub', cap)
+        # driver = webdriver.Chrome()
         driver.implicitly_wait(10.0)
         return driver
     elif platform.system().lower() == 'linux':
