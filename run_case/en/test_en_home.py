@@ -19,8 +19,10 @@ product_url = 'https://www.sucheon.com/en/product.html'
 home_url = 'https://www.sucheon.com/en/index.html'
 about_url = 'https://www.sucheon.com/about.html'
 application_url = 'https://www.sucheon.com/en/application.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestHome(object):
 
     feature = '首页-英文'

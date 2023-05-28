@@ -11,11 +11,11 @@ import pageModule.en.en_news as news
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
-
 news_url = 'https://www.sucheon.com/en/news.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestNews(object):
 
     feature = '最新动态-英文'

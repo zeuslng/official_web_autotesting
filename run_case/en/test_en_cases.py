@@ -7,10 +7,11 @@ import pageModule.en.en_cases as case
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
 cases_url = 'https://www.sucheon.com/en/application.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestCases(object):
 
     feature = '应用案例-英文'

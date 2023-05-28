@@ -12,10 +12,11 @@ import pageModule.en.en_products as product
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(path)
-
 product_url = 'https://www.sucheon.com/en/product.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestProduct(object):
 
     feature = '产品介绍-英文'

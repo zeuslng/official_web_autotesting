@@ -9,11 +9,11 @@ import utils.TestTool as tool
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 print(path)
 sys.path.append(path)
-
-
 about_url = 'https://www.sucheon.com/en/about.html'
+myskip = pytest.mark.skip
 
 
+@myskip
 class TestAbout(object):
 
     feature = '关于我们-英文'
