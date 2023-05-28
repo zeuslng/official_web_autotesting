@@ -42,41 +42,41 @@ if __name__ == '__main__':
     os.system(test_commend)
 
     # 然后运行用例 将报告创建在新文件夹下
-    if not os.path.exists(os.path.join(BASS_DIR, 'temp')):
-        os.mkdir(os.path.join(BASS_DIR, 'temp'))
-    generate_commend = f'allure generate ./temp -o ./allure-report/{Build_Order}'
-    os.system(generate_commend)
-
-    # 将此次测试报告中的历史存入history-trend.json中
-    his_dir = os.path.join(ALLURE_DIR, str(Build_Order) + '\widgets\history-trend.json')
-    report_his = os.path.join(ALLURE_DIR, 'report-history.json')
-
-    # 先打开当前测试报告的结果
-    with open(his_dir, mode='r+') as f2:
-        res = f2.read()
-        res = eval(res)
-        h1_data = res[0]["data"]
-        # 保存为json需要双引号
-        print(str(h1_data).replace("'", '"'))
-
-    # 当前测试报告结果保存到测试报告历史文件中
-        with open(report_his, mode='r+') as f1:
-            h = eval(f1.read())
-            if Build_Order == 1:
-                h[0]['data'] = h1_data
-            else:
-                data = {"buildOrder": Build_Order, "reportUr": "", "data": h1_data}
-                h.append(data)
-            print(str(h).replace("'", '"'))
-            # 对数据进行排序 根据buildOrder字段降序
-            h.sort(key=lambda x: x['buildOrder'], reverse=True)
-            # 将指针放在最前面 然后覆盖写入
-            f1.seek(0)
-            # 保存为json需要双引号
-            f1.write(str(h).replace("'", '"'))
-            # 同时保存一份到此次测试结果的历史文件中
-            f2.seek(0)
-            f2.write(str(h).replace("'", '"'))
+    # if not os.path.exists(os.path.join(BASS_DIR, 'temp')):
+    #     os.mkdir(os.path.join(BASS_DIR, 'temp'))
+    # generate_commend = f'allure generate ./temp -o ./allure-report/{Build_Order}'
+    # os.system(generate_commend)
+    #
+    # # 将此次测试报告中的历史存入history-trend.json中
+    # his_dir = os.path.join(ALLURE_DIR, str(Build_Order) + '\widgets\history-trend.json')
+    # report_his = os.path.join(ALLURE_DIR, 'report-history.json')
+    #
+    # # 先打开当前测试报告的结果
+    # with open(his_dir, mode='r+') as f2:
+    #     res = f2.read()
+    #     res = eval(res)
+    #     h1_data = res[0]["data"]
+    #     # 保存为json需要双引号
+    #     print(str(h1_data).replace("'", '"'))
+    #
+    # # 当前测试报告结果保存到测试报告历史文件中
+    #     with open(report_his, mode='r+') as f1:
+    #         h = eval(f1.read())
+    #         if Build_Order == 1:
+    #             h[0]['data'] = h1_data
+    #         else:
+    #             data = {"buildOrder": Build_Order, "reportUr": "", "data": h1_data}
+    #             h.append(data)
+    #         print(str(h).replace("'", '"'))
+    #         # 对数据进行排序 根据buildOrder字段降序
+    #         h.sort(key=lambda x: x['buildOrder'], reverse=True)
+    #         # 将指针放在最前面 然后覆盖写入
+    #         f1.seek(0)
+    #         # 保存为json需要双引号
+    #         f1.write(str(h).replace("'", '"'))
+    #         # 同时保存一份到此次测试结果的历史文件中
+    #         f2.seek(0)
+    #         f2.write(str(h).replace("'", '"'))
 
 
 
