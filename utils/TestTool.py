@@ -41,15 +41,11 @@ def get_driver():
         return driver
     elif platform.system().lower() == 'linux':
         print("======linux======")
-        driver = webdriver.Remote(
-            command_executor="https://selenium.sucheon.com/wd/hub",
-            desired_capabilities={
-                "browserName": "chrome",
-                "platform": "LINUX",
-                "platformName": "LINUX",
-            })
+        cap = {
+            "browserName": "chrome",
+        }
+        driver = webdriver.Remote('http://192.168.1.4:4444/wd/hub', cap)
         driver.implicitly_wait(10.0)
-        driver.set_window_size(1920, 937)
         return driver
 
 
