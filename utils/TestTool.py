@@ -44,7 +44,7 @@ def get_driver():
         cap = {
             "browserName": "chrome",
         }
-        driver = webdriver.Remote('http://192.168.1.4:4444/wd/hub', cap)
+        driver = webdriver.Remote('http://192.168.1.5:4444/wd/hub', cap)
         driver.implicitly_wait(10.0)
         return driver
 
